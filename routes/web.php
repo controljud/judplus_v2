@@ -18,7 +18,8 @@ Route::prefix('/{empresa}')->group(function () {
     Route::get('/usuarios', 'empresa\UserController@index')->name('index.usuario')->middleware('e.login');
 
     //Clientes
-
+    Route::get('/clientes/novo', 'empresa\CustomerController@getCreate')->name('get.novo.cliente')->middleware('e.login');
+    Route::post('/clientes/novo', 'empresa\CustomerController@postCreate')->name('post.novo.cliente')->middleware('e.login');
 
     //Processos
 

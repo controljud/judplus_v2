@@ -6,7 +6,8 @@
             {{$empresa->name}}<small>Usuário</small></h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Usuários</a></li>
-            <li class="active">Usuários</li>
+            <li>Usuários</li>
+            <li class="active">Novo</li>
         </ol>
     </section>
 

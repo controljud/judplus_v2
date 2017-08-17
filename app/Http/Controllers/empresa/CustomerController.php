@@ -20,4 +20,13 @@ class CustomerController extends Controller
 
         return view('empresa.clientes.clients', $dados);
     }
+
+    public function getCreate(Request $request){
+        $dados = [
+            'empresa' => $this->empresa,
+            'user' => $request->session()->get('_user'),
+        ];
+
+        return view('empresa.clientes.client', $dados);
+    }
 }
