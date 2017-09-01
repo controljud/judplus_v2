@@ -10,12 +10,26 @@
     </section>
 
     <section class="content">
-        <div class="quest-actions">
-            <a href="/{{$empresa->link}}/usuarios/novo" class="btn btn-success">Novo</a>
-        </div>
+
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Usuarios cadastrados em {{$empresa->name}}</h3>
+                <div class="box-tools">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <a href="/{{$empresa->link}}/usuarios/novo" class="btn btn-sm btn-success">Novo</a>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">

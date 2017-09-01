@@ -25,7 +25,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txNome">Nome</label>
-                                        <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome">
+                                        <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" required>
                                     </div>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txEmail">Email</label>
-                                        <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email">
+                                        <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email" required>
                                     </div>
                                 </div>
                             </div>
@@ -41,13 +41,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="psSenha">Senha</label>
-                                        <input type="password" class="form-control" id="psSenha" name="psSenha" placeholder="Senha">
+                                        <input type="password" class="form-control" id="psSenha" name="psSenha" placeholder="Senha" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="psCSenha">Confirme a senha</label>
-                                        <input type="password" class="form-control" id="psCSenha" placeholder="Confirme a senha">
+                                        <input type="password" class="form-control" id="psCSenha" placeholder="Confirme a senha" required>
                                     </div>
                                 </div>
                             </div>
@@ -55,7 +55,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="selTipo">Tipo de Usuário</label>
-                                        <select id="selTipo" name="selTipo" class="form-control">
+                                        <select id="selTipo" name="selTipo" class="form-control" required>
                                             <option value="">Selecione</option>
                                             @foreach($tipos as $tipo)
                                             <option value="{{$tipo->id}}">{{$tipo->tipo}}</option>
