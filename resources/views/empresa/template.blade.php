@@ -311,7 +311,7 @@
                     </li>
                     <li>
                         <a href="/{{$empresa->link}}/processos">
-                            <i class="fa fa-legal"></i> <span>Processos</span>
+                            <i class="fa fa-legal"></i> <span>Processos / Ações</span>
                         </a>
                     </li>
                     <li>
