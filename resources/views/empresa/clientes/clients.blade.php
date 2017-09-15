@@ -56,9 +56,9 @@
                             @endif
                         </td>
                         <td>
-                            <div class="btn btn-xs btn-default">Processos</div>
-                            <div class="btn btn-xs btn-primary">Editar</div>
-                            <div class="btn btn-xs btn-danger">Excluir</div>
+                            <a href="/{{$empresa->link}}/clientes/processos/{{$client->id}}" class="btn btn-xs btn-default">Processos</a>
+                            <a href="/{{$empresa->link}}/clientes/editar/{{$client->id}}" class="btn btn-xs btn-primary">Editar</a>
+                            <a href="/{{$empresa->link}}/clientes/excluir{{$client->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
                     </tr>
                     @endforeach

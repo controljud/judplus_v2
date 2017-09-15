@@ -32,6 +32,7 @@
         <script src="/bower_components/moment/min/moment.min.js"></script>
         <script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
         <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/script.js"></script>
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

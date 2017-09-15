@@ -17,8 +17,11 @@
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-4">
-                            <img class="profile-user-img img-responsive img-circle" src="/image/user.jpg" alt="User profile picture">
+                        <div class="col-md-4" style="text-align: center">
+                            <label for="flUser">
+                                <img id="imgUsr" class="profile-user-img img-responsive img-circle" src="/image/user.jpg" alt="User profile picture">
+                                <input type="file" id="flUser" name="flUser" style="display:none"/>
+                            </label>
                         </div>
                         <div class="col-md-8">
                             <div class="row">

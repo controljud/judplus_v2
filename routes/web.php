@@ -20,6 +20,8 @@ Route::prefix('/{empresa}')->group(function () {
     //Clientes
     Route::get('/clientes/novo', 'empresa\CustomerController@getCreate')->name('get.novo.cliente')->middleware('e.login');
     Route::post('/clientes/novo', 'empresa\CustomerController@postCreate')->name('post.novo.cliente')->middleware('e.login');
+    Route::get('/clientes/editar/{id}', 'empresa\CustomerController@getEdit')->name('get.editar.cliente')->middleware('e.login');
+    Route::post('/clientes/editar/{id}', 'empresa\CustomerController@postEdit')->name('post.editar.cliente')->middleware('e.login');
 
     //Processos
 
