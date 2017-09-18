@@ -30,4 +30,6 @@ Route::prefix('/{empresa}')->group(function () {
     //Usuarios
     Route::get('/usuarios/novo', 'empresa\UserController@getCreate')->name('get.novo.usuario')->middleware('e.login');
     Route::post('/usuarios/novo', 'empresa\UserController@postCreate')->name('post.novo.usuario')->middleware('e.login');
+    Route::get('/usuarios/editar/{id}', 'empresa\UserController@getEdit')->name('get.editar.usuario')->middleware('e.login');
+    Route::post('/usuarios/editar/{id}', 'empresa\UserController@postEdit')->name('post.editar.usuario')->middleware('e.login');
 });

@@ -10,7 +10,6 @@
     </section>
 
     <section class="content">
-
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">Usuarios cadastrados em {{$empresa->name}}</h3>
@@ -60,8 +59,8 @@
                             </span>
                         </td>
                         <td>
-                            <div class="btn btn-xs btn-primary">Editar</div>
-                            <div class="btn btn-xs btn-danger">Excluir</div>
+                            <a href="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
+                            <a href="/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
                     </tr>
                     @endforeach
