@@ -18,8 +18,9 @@
                     <div class="row">
                         <div class="col-md-4" style="text-align: center">
                             <label for="flUser">
-                                <img id="imgUsr" class="profile-user-img img-responsive img-circle" src=@if($usuario->image != '') {{"/image/users/".$usuario->image}} @else {{"/image/user.jpg"}} @endif alt="User profile picture">
+                                <img id="imgUsr" class="profile-user-img img-responsive img-circle" src=@if($usuario->image != '') {{"/image/users/".$empresa->link.'/'.$usuario->image}} @else {{"/image/user.jpg"}} @endif alt="User profile picture">
                                 <input type="file" name="flUser" id="flUser" style="display:none"/>
+                                <h3>{{$usuario->name}}</h3>
                             </label>
                         </div>
                         <div class="col-md-8">
@@ -27,7 +28,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txNome">Nome</label>
-                                        <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" value="{{$usuario->name}}" required>
+                                        <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" autocomplete="off" value="{{$usuario->name}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -35,7 +36,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="txEmail">Email</label>
-                                        <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email" value="{{$usuario->email}}" required>
+                                        <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email" autocomplete="off" value="{{$usuario->email}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +44,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="psSenha">Senha</label>
-                                        <input type="password" class="form-control" id="psSenha" name="psSenha" placeholder="Senha" value="{{$usuario->senha}}" required>
+                                        <input type="password" class="form-control" id="psSenha" name="psSenha" placeholder="Senha" value="{{$usuario->senha}}">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="psCSenha">Confirme a senha</label>
-                                        <input type="password" class="form-control" id="psCSenha" placeholder="Confirme a senha" value="{{$usuario->senha}}" required>
+                                        <input type="password" class="form-control" id="psCSenha" placeholder="Confirme a senha" value="{{$usuario->senha}}">
                                     </div>
                                 </div>
                             </div>

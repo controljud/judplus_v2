@@ -11,7 +11,7 @@ class CustomerController extends Controller
 {
     public function index(Request $request){
         $clients = Customer::where('id_empresa', $this->empresa->id)
-            ->orderBy('name')->paginate(15);
+            ->orderBy('nome')->paginate(15);
 
         $dados = [
             'empresa' => $this->empresa,

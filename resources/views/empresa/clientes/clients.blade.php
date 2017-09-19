@@ -45,7 +45,7 @@
                     <tbody>
                     @foreach($clients as $client)
                     <tr>
-                        <td>{{$client->name}}</td>
+                        <td>{{$client->nome}}</td>
                         <td>{{$client->email}}</td>
                         <td>{{$client->cpf_cnpj}}</td>
                         <td>
@@ -56,6 +56,7 @@
                             @endif
                         </td>
                         <td>
+                            <div class="btn btn-xs btn-default" id="viewCust">Visualizar</div>
                             <a href="/{{$empresa->link}}/clientes/processos/{{$client->id}}" class="btn btn-xs btn-default">Processos</a>
                             <a href="/{{$empresa->link}}/clientes/editar/{{$client->id}}" class="btn btn-xs btn-primary">Editar</a>
                             <a href="/{{$empresa->link}}/clientes/excluir{{$client->id}}" class="btn btn-xs btn-danger">Excluir</a>

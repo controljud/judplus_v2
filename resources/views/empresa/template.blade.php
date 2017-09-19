@@ -32,6 +32,7 @@
         <script src="/bower_components/moment/min/moment.min.js"></script>
         <script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
         <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/js/maskedinput-min.js"></script>
         <script src="/js/script.js"></script>
 
         <!-- Google Font -->
@@ -256,13 +257,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{$user->image}}" class="user-image" alt="User Image">
+                                <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="user-image" alt="User Image">
                                 <span class="hidden-xs">{{$user->name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="{{$user->image}}" class="img-circle" alt="User Image">
+                                    <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
 
                                     <p>
                                         {{$user->name}}
@@ -291,7 +292,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="{{$user->image}}" class="img-circle" alt="User Image">
+                        <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>{{$user->name}}</p>

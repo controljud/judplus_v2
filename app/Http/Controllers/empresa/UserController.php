@@ -42,6 +42,16 @@ class UserController extends Controller
         $email = $request->input('txEmail');
         $senha = $request->input('psSenha');
         $tipo = $request->input('selTipo');
+        $name_image = null;
+
+        if($request->file('flUser')->isValid()){
+            $file = $request->file('flUser');
+            $ext = $file->getClientOriginalExtension();
+
+            $name_image = md5(rand(0, 10000).$nome.time()).'.'.$ext;
+
+            $file->move('image/users', $name_image);
+        }
 
         $user = new Users;
         $user->name = $nome;
@@ -49,6 +59,7 @@ class UserController extends Controller
         $user->password = md5($senha);
         $user->id_tipo_usuario = $tipo;
         $user->id_empresa = $this->empresa->id;
+        $user->image = $name_image;
 
         $user->save();
 
@@ -88,13 +99,13 @@ class UserController extends Controller
 
             $name_image = md5(rand(0, 10000).$nome.time()).'.'.$ext;
 
-            $file->move('image/users', $name_image);
+            $file->move('image/users/'.$this->empresa->link.'/', $name_image);
         }
 
         $user = Users::where('id', $id_user)->first();
         $user->name = $nome;
         $user->email = $email;
-        $user->password = md5($senha);
+        $user->password = $senha != '' ? md5($senha) : $user->password;
         $user->id_tipo_usuario = $tipo;
         $user->id_empresa = $this->empresa->id;
         $user->image = $name_image;

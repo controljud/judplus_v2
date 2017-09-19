@@ -59,6 +59,7 @@
                             </span>
                         </td>
                         <td>
+                            <div class="btn btn-xs btn-default" id="viewUsr">Visualizar</div>
                             <a href="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
                             <a href="/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
@@ -66,6 +67,7 @@
                     @endforeach
                     </tbody>
                 </table>
+
                 {{ $usuarios->links() }}
             </div>
             <!-- /.box-body -->

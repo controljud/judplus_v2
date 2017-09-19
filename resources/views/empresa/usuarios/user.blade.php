@@ -21,6 +21,7 @@
                             <label for="flUser">
                                 <img id="imgUsr" class="profile-user-img img-responsive img-circle" src="/image/user.jpg" alt="User profile picture">
                                 <input type="file" id="flUser" name="flUser" style="display:none"/>
+                                <h3 id="ttUsuario"></h3>
                             </label>
                         </div>
                         <div class="col-md-8">

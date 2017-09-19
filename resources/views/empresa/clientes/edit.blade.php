@@ -19,7 +19,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="txNome">Nome</label>
-                                <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" autocomplete="off" value="{{$cliente->name}}">
+                                <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" autocomplete="off" value="{{$cliente->nome}}">
                             </div>
                         </div>
                         <div class="col-md-4">

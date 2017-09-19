@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <label for="txComplemento">Complemento</label>
-                        <input type="text" class="form-control" id="txComplemento" name="txComplemento" placeholder="Número" autocomplete="off"/>
+                        <input type="text" class="form-control" id="txComplemento" name="txComplemento" placeholder="Complemento" autocomplete="off"/>
                     </div>
                 </div>
                 <div class="row">
@@ -37,7 +37,7 @@
                         <select class="form-control" id="selEstado" name="selEstado" placeholder="Selecione">
                             <option value="">Selecione</option>
                             @foreach($estados as $estado)
-                                <option value="{{$estado->id}}">{{$estado->nome}}</option>
+                                <option value="{{$estado->sigla}}">{{$estado->nome}}</option>
                             @endforeach
                         </select>
                     </div>
