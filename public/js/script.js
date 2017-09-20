@@ -16,12 +16,31 @@ $(document).ready(function(){
     //Máscaras
     $('#txCep').mask('99999-999');
 
+    //Usuários
     $("#flUser").change(function(){
         readURL(this);
     });
     $('#txNome').blur(function(){
         $('#ttUsuario').text($(this).val());
     });
+    $('.viewUsr').click(function(){
+        id = $(this).attr('id');
+        $.ajax({
+            url:'/infobase/usuarios/view',
+            method:'post',
+            data:{
+                id_usr:id
+            },
+            success:function(ret){
+                if(ret != '') {
+                    retorno = JSON.parse(ret);
+                    alert(ret);
+                    //$('#titViewImg').attr('src', 'image/users/infobase/'+retorno.image);
+                }
+            }
+        });
+    });
+
     $('#txCep').blur(function(){
         cep = $(this).val();
         if(cep != ''){

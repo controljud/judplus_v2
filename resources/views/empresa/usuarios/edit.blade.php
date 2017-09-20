@@ -78,4 +78,5 @@
             </form>
         </div>
     </section>
+    @include('empresa.usuarios.modalview')
 @stop

@@ -49,9 +49,16 @@ DROP TABLE IF EXISTS `clientes`;
 
 CREATE TABLE `clientes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `nome` varchar(255) NOT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `cpf_cnpj` varchar(14) DEFAULT NULL,
+  `id_tipo_pessoa` int(11) DEFAULT NULL,
+  `documento` varchar(14) DEFAULT NULL,
+  `rg` varchar(50) DEFAULT NULL,
+  `orgao` varchar(50) DEFAULT NULL,
+  `nascimento` timestamp NULL DEFAULT NULL,
+  `sexo` char(1) DEFAULT NULL,
+  `id_naturalidade` int(11) DEFAULT NULL,
+  `image` char(32) DEFAULT NULL,
   `id_empresa` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -61,7 +68,7 @@ CREATE TABLE `clientes` (
 
 /*Data for the table `clientes` */
 
-insert  into `clientes`(`id`,`name`,`email`,`cpf_cnpj`,`id_empresa`,`created_at`,`updated_at`,`deleted_at`) values (1,'Maria do Rosário','maria@gmail.com','16046540654',2,'2017-08-14 15:02:59','2017-08-14 15:03:01',NULL),(2,'Jamerson Oliveira','jamerson@gmail.com','45654687546',2,'2017-08-14 15:07:56','2017-08-14 15:07:59',NULL);
+insert  into `clientes`(`id`,`nome`,`email`,`id_tipo_pessoa`,`documento`,`rg`,`orgao`,`nascimento`,`sexo`,`id_naturalidade`,`image`,`id_empresa`,`created_at`,`updated_at`,`deleted_at`) values (1,'Maria do Rosário','maria@gmail.com',NULL,'16046540654',NULL,NULL,NULL,NULL,NULL,NULL,2,'2017-08-14 15:02:59','2017-08-14 15:03:01',NULL),(2,'Jamerson Oliveira','jamerson@gmail.com',NULL,'45654687546',NULL,NULL,NULL,NULL,NULL,NULL,2,'2017-08-14 15:07:56','2017-08-14 15:07:59',NULL);
 
 /*Table structure for table `empresa` */
 
@@ -93,14 +100,15 @@ CREATE TABLE `endereco` (
   `complemento` varchar(50) DEFAULT NULL,
   `bairro` varchar(255) DEFAULT NULL,
   `cidade` varchar(255) DEFAULT NULL,
-  `id_uf` int(11) DEFAULT NULL,
-  `id_pais` int(11) DEFAULT NULL,
+  `id_tipo` int(11) DEFAULT '1',
+  `id_uf` char(2) DEFAULT NULL,
+  `id_pais` int(11) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `endereco` */
 
-insert  into `endereco`(`id`,`id_cliente`,`cep`,`endereco`,`numero`,`complemento`,`bairro`,`cidade`,`id_uf`,`id_pais`) values (1,1,20040002,'Av. Rio Branco','134','21º andar','Centro','3241',19,1),(2,1,23585819,'Rua Ernesto Gonçalves','65','Casa 01','Paciência','3241',19,1),(3,2,20040020,'Praça Pio X','12',NULL,'Centro','3241',19,1);
+insert  into `endereco`(`id`,`id_cliente`,`cep`,`endereco`,`numero`,`complemento`,`bairro`,`cidade`,`id_tipo`,`id_uf`,`id_pais`) values (1,1,20040002,'Av. Rio Branco','134','21º andar','Centro','3241',1,'RJ',1),(2,1,23585819,'Rua Ernesto Gonçalves','65','Casa 01','Paciência','3241',1,'RJ',1),(3,2,20040020,'Praça Pio X','12',NULL,'Centro','3241',1,'RJ',1);
 
 /*Table structure for table `historico` */
 
@@ -167,6 +175,20 @@ CREATE TABLE `telefone` (
 
 insert  into `telefone`(`id`,`id_cliente`,`ddd`,`numero`,`ramal`) values (1,1,21,65465454,NULL),(2,1,21,45645654,NULL),(3,2,21,13210643,NULL);
 
+/*Table structure for table `tipo_endereco` */
+
+DROP TABLE IF EXISTS `tipo_endereco`;
+
+CREATE TABLE `tipo_endereco` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+/*Data for the table `tipo_endereco` */
+
+insert  into `tipo_endereco`(`id`,`tipo`) values (1,'Residencial'),(2,'Comercial');
+
 /*Table structure for table `tipo_usuario` */
 
 DROP TABLE IF EXISTS `tipo_usuario`;
@@ -217,11 +239,11 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`,`id_empresa`),
   KEY `fk_user_empresa` (`id_empresa`),
   CONSTRAINT `fk_user_empresa` FOREIGN KEY (`id_empresa`) REFERENCES `empresa` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`name`,`email`,`password`,`image`,`id_empresa`,`id_tipo_usuario`,`created_at`,`updated_at`,`deleted_at`) values (1,'Isaias Lima dos Santos','isaikki@gmail.com','114fdfefd3d69799f0b6f73ef764d405',NULL,1,4,'2017-08-09 18:47:23','2017-08-09 18:47:28',NULL),(2,'Isaias Lima dos Santos','isaikki@gmail.com','114fdfefd3d69799f0b6f73ef764d405',NULL,2,4,'2017-08-10 14:30:26','2017-08-10 14:30:28',NULL),(3,'Elias Naval Albuquerque','eliakki@gmail.com','a9065c2e681822f3bcd2857c50978745',NULL,1,2,'2017-08-11 19:50:41','2017-08-11 19:50:41',NULL),(4,'Helena Ribeiro','helenaribeiro@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,1,'2017-08-14 14:29:03','2017-08-14 14:29:03',NULL),(5,'John dos Santos','john@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,2,'2017-08-14 14:29:33','2017-08-14 14:29:33',NULL),(6,'Monica da Silva','monica@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,1,'2017-08-14 14:29:55','2017-08-14 14:29:55',NULL),(7,'Hermes dos Montes','hermes@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,3,'2017-08-14 14:30:26','2017-08-14 14:30:26',NULL),(8,'Hermes dos Montes','hermes@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,3,'2017-08-14 14:31:40','2017-08-14 14:31:40',NULL),(9,'Alana Gomes','alana@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,1,'2017-08-14 14:32:06','2017-08-14 14:32:06',NULL),(10,'Beatriz Monteiro','beatriz@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,2,'2017-08-14 14:32:32','2017-08-14 14:32:32',NULL),(11,'Jone','jone@gmail.com','114fdfefd3d69799f0b6f73ef764d405',NULL,2,2,'2017-08-17 14:23:44','2017-08-17 14:23:44',NULL);
+insert  into `users`(`id`,`name`,`email`,`password`,`image`,`id_empresa`,`id_tipo_usuario`,`created_at`,`updated_at`,`deleted_at`) values (1,'Isaias Lima dos Santos','isaikki@gmail.com','114fdfefd3d69799f0b6f73ef764d405',NULL,1,4,'2017-08-09 18:47:23','2017-08-09 18:47:28',NULL),(2,'Isaias Lima dos Santos','isaikki@gmail.com','e10adc3949ba59abbe56e057f20f883e','33c1e4b9e0db4c63dee34ef7eed02b47.JPG',2,4,'2017-08-10 14:30:26','2017-09-19 14:26:05',NULL),(3,'Elias Naval Albuquerque','eliakki@gmail.com','a9065c2e681822f3bcd2857c50978745',NULL,1,2,'2017-08-11 19:50:41','2017-08-11 19:50:41',NULL),(4,'Helena Ribeiro','helenaribeiro@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,1,'2017-08-14 14:29:03','2017-08-14 14:29:03',NULL),(5,'John dos Santos','john@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,2,'2017-08-14 14:29:33','2017-08-14 14:29:33',NULL),(6,'Monica da Silva','monica@gmail.com','e10adc3949ba59abbe56e057f20f883e','4bd897237c6e0c1d6eaf8960ed242ab6.jpg',2,1,'2017-08-14 14:29:55','2017-09-19 13:07:55',NULL),(7,'Hermes dos Montes','hermes@gmail.com','e10adc3949ba59abbe56e057f20f883e','e41e4bc66d06a7e1cc73e457863d66fd.png',2,3,'2017-08-14 14:30:26','2017-09-19 13:06:09',NULL),(9,'Alana Gomes','alana@gmail.com','e10adc3949ba59abbe56e057f20f883e','ba95b6f81eb1b145cc71856fe9b78804.png',2,1,'2017-08-14 14:32:06','2017-09-20 13:27:47',NULL),(10,'Beatriz Monteiro','beatriz@gmail.com','e10adc3949ba59abbe56e057f20f883e',NULL,2,2,'2017-08-14 14:32:32','2017-08-14 14:32:32',NULL),(11,'Jone','jone@gmail.com','114fdfefd3d69799f0b6f73ef764d405',NULL,2,2,'2017-08-17 14:23:44','2017-08-17 14:23:44',NULL);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

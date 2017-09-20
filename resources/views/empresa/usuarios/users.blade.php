@@ -59,7 +59,7 @@
                             </span>
                         </td>
                         <td>
-                            <div class="btn btn-xs btn-default" id="viewUsr">Visualizar</div>
+                            <div class="btn btn-xs btn-default viewUsr" id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-view-usuario">Visualizar</div>
                             <a href="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
                             <a href="/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
@@ -67,9 +67,9 @@
                     @endforeach
                     </tbody>
                 </table>
-
                 {{ $usuarios->links() }}
             </div>
+            @include('empresa.usuarios.modalview')
             <!-- /.box-body -->
         </div>
     </section>

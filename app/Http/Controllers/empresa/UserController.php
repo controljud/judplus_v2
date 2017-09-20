@@ -115,4 +115,14 @@ class UserController extends Controller
         return $this->index($request);
     }
 
+    public function ajaxView(Request $request){
+        /*$id_usr = $request->id_usr;
+        if($user = Users::where('id', $id_usr)->where('id_empresa', $this->empresa->id)->first()){
+            return json_encode($user);
+        }else{
+            return '';
+        }*/
+        return 'ok';
+    }
+
 }
