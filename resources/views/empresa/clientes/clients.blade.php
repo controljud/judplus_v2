@@ -31,8 +31,8 @@
                 </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>Nome</th>

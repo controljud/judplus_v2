@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
         <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <link rel="stylesheet" href="/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/css/style.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,6 +32,7 @@
         <script src="/bower_components/moment/min/moment.min.js"></script>
         <script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
         <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="/dist/js/adminlte.min.js"></script>
         <script src="/js/maskedinput-min.js"></script>
         <script src="/js/script.js"></script>
 
@@ -44,7 +45,7 @@
             <!-- Logo -->
             <a href="index2.html" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini"><b>A</b>LT</span>
+                <span class="logo-mini"><b>J+</b></span>
                 <!-- logo for regular state and mobile devices -->
                 <span class="logo-lg"><b>Judplus</b> - {{$empresa->name}}</span>
             </a>
@@ -273,7 +274,7 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="/{{$empresa->link}}/usuarios/editar/{{$user->id}}" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="/{{$empresa->link}}/logout" class="btn btn-default btn-flat">Sign out</a>

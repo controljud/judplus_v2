@@ -13,8 +13,8 @@
                         <input type="text" class="form-control" id="txDDD" name="txDDD" placeholder="DDD" autocomplete="off"/>
                     </div>
                     <div class="col-md-3">
-                        <label for="txNumero">Número</label>
-                        <input type="text" class="form-control" id="txNumero" name="txNumero" placeholder="Número" autocomplete="off"/>
+                        <label for="txNumeroTel">Número</label>
+                        <input type="text" class="form-control" id="txNumeroTel" name="txNumeroTel" placeholder="Número" autocomplete="off"/>
                     </div>
                     <div class="col-md-3">
                         <label for="txRamal">Ramal</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Adicionar</button>
+                <button type="button" class="btn btn-primary" id="btAddTelefone">Adicionar</button>
             </div>
         </div>
     </div>

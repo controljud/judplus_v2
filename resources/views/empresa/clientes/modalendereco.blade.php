@@ -48,8 +48,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary">Adicionar</button>
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="btFecharEndereco">Fechar</button>
+                <button type="button" class="btn btn-primary" id="btAddEnderecoCliente">Adicionar</button>
             </div>
         </div>
         <!-- /.modal-content -->

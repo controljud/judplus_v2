@@ -47,17 +47,20 @@
                             <table id="tblEnderecos" class="table table-bordered">
                                 <tr><th colspan="8" style="text-align: center">Endereços</th></tr>
                                 <tr><th>Cep</th><th>Endereço</th><th>Número</th><th>Complemento</th><th>Bairro</th><th>Cidade</th><th>Estado</th><th></th></tr>
+                                <?php $x = 0; ?>
                                 @foreach($enderecos as $endereco)
                                 <tr>
-                                    <td>{{$endereco->cep}}</td>
-                                    <td>{{$endereco->endereco}}</td>
-                                    <td>{{$endereco->numero}}</td>
-                                    <td>{{$endereco->complemento}}</td>
-                                    <td>{{$endereco->bairro}}</td>
-                                    <td>{{$endereco->cidade}}</td>
-                                    <td>{{$endereco->estado}}</td>
-                                    <td><a href="#" class="btn btn-sm btn-danger">Excluir</a></td>
+                                    <td><input type="hidden" name="endereco[cep][{{$x}}]" value="{{$endereco->cep}}"/>{{$endereco->cep}}</td>
+                                    <td><input type="hidden" name="endereco[endereco][{{$x}}]" value="{{$endereco->endereco}}"/>{{$endereco->endereco}}</td>
+                                    <td><input type="hidden" name="endereco[numero][{{$x}}]" value="{{$endereco->numero}}"/>{{$endereco->numero}}</td>
+                                    <td><input type="hidden" name="endereco[complemento][{{$x}}]" value="{{$endereco->complemento}}"/>{{$endereco->complemento}}</td>
+                                    <td><input type="hidden" name="endereco[bairro][{{$x}}]" value="{{$endereco->bairro}}"/>{{$endereco->bairro}}</td>
+                                    <td><input type="hidden" name="endereco[cidade][{{$x}}]" value="{{$endereco->cidade}}"/>{{$endereco->cidade}}</td>
+                                    <td><input type="hidden" name="endereco[estado][{{$x}}]" value="{{$endereco->estado}}"/>{{$endereco->estado}}</td>
+                                    <td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>
                                 </tr>
+                                <?php $x++; ?>
+                                <script>numEndereco++</script>
                                 @endforeach
                             </table>
                         </div>
@@ -74,12 +77,16 @@
                             <table id="tblTelefones" class="table table-bordered">
                                 <tr><th colspan="3">Telefones</th></tr>
                                 <tr><th>DDD</th><th>Número</th><th>Ramal</th></tr>
+                                <?php $x = 0; ?>
                                 @foreach($telefones as $telefone)
                                 <tr>
-                                    <td>{{$telefone->ddd}}</td>
-                                    <td>{{$telefone->numero}}</td>
-                                    <td>{{$telefone->ramal}}</td>
+                                    <td><input type="hidden" name="telefone[ddd][{{$x}}]" value="{{$telefone->ddd}}"/>{{$telefone->ddd}}</td>
+                                    <td><input type="hidden" name="telefone[numero][{{$x}}]" value="{{$telefone->numero}}"/>{{$telefone->numero}}</td>
+                                    <td><input type="hidden" name="telefone[ramal][{{$x}}]" value="{{$telefone->ramal}}"/>{{$telefone->ramal}}</td>
+                                    <td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>
                                 </tr>
+                                <?php $x++; ?>
+                                <script>numTelefone++</script>
                                 @endforeach
                             </table>
                         </div>

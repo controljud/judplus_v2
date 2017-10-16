@@ -31,8 +31,8 @@
                 </div>
             </div>
             <!-- /.box-header -->
-            <div class="box-body">
-                <table id="example1" class="table table-bordered table-striped">
+            <div class="box-body table-responsive no-padding">
+                <table id="example1" class="table table-bordered table-hover">
                     <thead>
                     <tr>
                         <th>Nome</th>
@@ -59,7 +59,7 @@
                             </span>
                         </td>
                         <td>
-                            <div class="btn btn-xs btn-default viewUsr" id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-view-usuario">Visualizar</div>
+                            <div class="btn btn-xs btn-default viewUsr" id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-view-usuario" data-company="{{$empresa->link}}">Visualizar</div>
                             <a href="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
                             <a href="/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>

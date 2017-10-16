@@ -2,3 +2,6 @@
     background-color: black;
     display:none;
 }
+.m-cursor{
+    cursor:pointer;
+}
