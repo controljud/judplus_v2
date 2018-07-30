@@ -35,7 +35,7 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Logue-se para iniciar a sessão</p>
-        <form method="post" action="/{{$empresa->link}}/login">
+        {!! Form::open(array('route' => array('post.login.empresa', $empresa->link))) !!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback">
                 <input type="email" class="form-control" placeholder="Email" name="email">
@@ -59,7 +59,7 @@
                 </div>
                 <!-- /.col -->
             </div>
-        </form>
+        {!! Form::close() !!}
         <a href="#">Esqueci a senha</a><br>
 
     </div>

@@ -12,13 +12,13 @@
     </section>
     <section class="content">
         <div class="box">
-            <form method="post" action="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" enctype="multipart/form-data">
+            <form method="post" action="{{env('APP_URL')}}/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4" style="text-align: center">
                             <label for="flUser">
-                                <img id="imgUsr" class="profile-user-img img-responsive img-circle" src=@if($usuario->image != '') {{"/image/users/".$empresa->link.'/'.$usuario->image}} @else {{"/image/user.jpg"}} @endif alt="User profile picture">
+                                <img id="imgUsr" class="profile-user-img img-responsive img-circle" src="@if($usuario->image != '') {{env('APP_URL')."/image/users/".$empresa->link.'/'.$usuario->image}} @else {{env('APP_URL')."/image/user.jpg"}} @endif" alt="User profile picture">
                                 <input type="file" name="flUser" id="flUser" style="display:none"/>
                                 <h3>{{$usuario->name}}</h3>
                             </label>

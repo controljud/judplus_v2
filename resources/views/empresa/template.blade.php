@@ -6,14 +6,14 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-        <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/bower_components/Ionicons/css/ionicons.min.css">
-        <link rel="stylesheet" href="/dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="/dist/css/skins/_all-skins.min.css">
-        <link rel="stylesheet" href="/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-        <link rel="stylesheet" href="/bower_components/bootstrap-daterangepicker/daterangepicker.css">
-        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/bower_components/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/bower_components/Ionicons/css/ionicons.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/dist/css/AdminLTE.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+        <link rel="stylesheet" href="{{env('APP_URL')}}/css/style.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -22,19 +22,19 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-        <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="/bower_components/jquery-ui/jquery-ui.min.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
         <script>
             $.widget.bridge('uibutton', $.ui.button);
         </script>
-        <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <script src="/bower_components/moment/min/moment.min.js"></script>
-        <script src="/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-        <script src="/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-        <script src="/dist/js/adminlte.min.js"></script>
-        <script src="/js/maskedinput-min.js"></script>
-        <script src="/js/script.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/moment/min/moment.min.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <script src="{{env('APP_URL')}}/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="{{env('APP_URL')}}/dist/js/adminlte.min.js"></script>
+        <script src="{{env('APP_URL')}}/js/maskedinput-min.js"></script>
+        <script src="{{env('APP_URL')}}/js/script.js"></script>
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -72,7 +72,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{env('APP_URL')}}/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -85,7 +85,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{env('APP_URL')}}/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     AdminLTE Design Team
@@ -97,7 +97,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{env('APP_URL')}}/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -109,7 +109,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{env('APP_URL')}}/dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -121,7 +121,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    <img src="{{env('APP_URL')}}/dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -258,13 +258,13 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="user-image" alt="User Image">
+                                <img src="{{env('APP_URL')}}/image/users/{{$empresa->link}}/{{$user->image}}" class="user-image" alt="User Image">
                                 <span class="hidden-xs">{{$user->name}}</span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                    <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
+                                    <img src="{{env('APP_URL')}}/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
 
                                     <p>
                                         {{$user->name}}
@@ -274,10 +274,10 @@
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="/{{$empresa->link}}/usuarios/editar/{{$user->id}}" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios/editar/{{$user->id}}" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="/{{$empresa->link}}/logout" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/logout" class="btn btn-default btn-flat">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -293,7 +293,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
+                        <img src="{{env('APP_URL')}}/image/users/{{$empresa->link}}/{{$user->image}}" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
                         <p>{{$user->name}}</p>
@@ -303,28 +303,28 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">Navegação</li>
                     <li>
-                        <a href="/{{$empresa->link}}">
+                        <a href="{{env('APP_URL')}}/{{$empresa->link}}">
                             <i class="fa fa-dashboard"></i> <span>Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/{{$empresa->link}}/clientes">
+                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes">
                             <i class="fa fa-user"></i> <span>Clientes</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/{{$empresa->link}}/processos">
+                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/processos">
                             <i class="fa fa-legal"></i> <span>Processos / Ações</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/{{$empresa->link}}/agenda">
+                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/agenda">
                             <i class="fa fa-calendar"></i> <span>Agenda</span>
                         </a>
                     </li>
                     @if($user->id_tipo >= 3)
                     <li>
-                        <a href="/{{$empresa->link}}/usuarios">
+                        <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios">
                             <i class="fa fa-users"></i> <span>Usuarios</span>
                         </a>
                     </li>

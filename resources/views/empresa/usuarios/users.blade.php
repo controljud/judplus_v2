@@ -16,7 +16,7 @@
                 <div class="box-tools">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="/{{$empresa->link}}/usuarios/novo" class="btn btn-sm btn-success">Novo</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios/novo" class="btn btn-sm btn-success">Novo</a>
                         </div>
                         <div class="col-md-10">
                             <div class="input-group input-group-sm" style="width: 250px;">
@@ -60,8 +60,8 @@
                         </td>
                         <td>
                             <div class="btn btn-xs btn-default viewUsr" id="{{$usuario->id}}" data-toggle="modal" data-target="#modal-view-usuario" data-company="{{$empresa->link}}">Visualizar</div>
-                            <a href="/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
-                            <a href="/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios/editar/{{$usuario->id}}" class="btn btn-xs btn-primary">Editar</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios/excluir{{$usuario->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
                     </tr>
                     @endforeach

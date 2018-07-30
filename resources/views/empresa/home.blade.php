@@ -22,7 +22,7 @@
                 <div class="icon">
                     <i class="ion ion-person"></i>
                 </div>
-                <a href="/{{$empresa->link}}/clientes" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -36,7 +36,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="/{{$empresa->link}}/processos" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{env('APP_URL')}}/{{$empresa->link}}/processos" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
@@ -50,7 +50,7 @@
                 <div class="icon">
                     <i class="ion ion-calendar"></i>
                 </div>
-                <a href="/{{$empresa->link}}/agenda" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{env('APP_URL')}}/{{$empresa->link}}/agenda" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         @if($user->id_tipo >= 3)
@@ -64,7 +64,7 @@
                 <div class="icon">
                     <i class="ion ion-person-stalker"></i>
                 </div>
-                <a href="/{{$empresa->link}}/usuarios" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="{{env('APP_URL')}}/{{$empresa->link}}/usuarios" class="small-box-footer">Visualizar <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
         @endif

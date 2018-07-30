@@ -11,7 +11,7 @@
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12">
-                                <img id="titViewImg" class="profile-user-img img-responsive img-circle" src="/image/user.jpg" alt="User profile picture">
+                                <img id="titViewImg" class="profile-user-img img-responsive img-circle" src="{{env('APP_URL')}}/image/user.jpg" alt="User profile picture">
                             </div>
                         </div>
                     </div>
