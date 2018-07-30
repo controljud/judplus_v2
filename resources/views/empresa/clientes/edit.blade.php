@@ -12,26 +12,59 @@
 
     <section class="content">
         <div class="box">
-            <form method="post" action="/{{$empresa->link}}/clientes/editar">
+            <form method="post" action="{{env('APP_URL')}}/{{$empresa->link}}/clientes/editar">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="_id" value="{{isset($cliente->id) ? $cliente->id : 0}}" />
                 <div class="box-body">
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label for="txNome">Nome</label>
-                                <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" autocomplete="off" value="{{$cliente->nome}}">
+                                <label for="txNome">Nome*</label>
+                                <input type="text" class="form-control" id="txNome" name="txNome" placeholder="Nome" autocomplete="off" value="{{isset($cliente->nome) ? $cliente->nome : ''}}" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
-                                <label for="txEmail">Email</label>
-                                <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email" autocomplete="off" value="{{$cliente->email}}">
+                                <label for="txEmail">Email*</label>
+                                <input type="email" class="form-control" id="txEmail" name="txEmail" placeholder="Email" autocomplete="off" value="{{isset($cliente->email) ? $cliente->email : ''}}" required>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <div class="form-group">
-                                <label for="psSenha">CPF/CNPJ</label>
-                                <input type="text" class="form-control" id="txDocumento" name="txDocumento" placeholder="Senha" autocomplete="off" value="{{$cliente->cpf_cnpj}}">
+                                <label for="selTipoPessoa">Tipo de pessoa*</label>
+                                <select id="selTipoPessoa" name="selTipoPessoa" class="form-control" placeholder="Selecione" required>
+                                    <option value="F" {{isset($cliente->tipo_pessoa) && $cliente->tipo_pessoa == 'F' ? 'selected' : ''}}>Pessoa Física</option>
+                                    <option value="J" {{isset($cliente->tipo_pessoa) && $cliente->tipo_pessoa == 'J' ? 'selected' : ''}}>Pessoa Jurídica</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txDocumento">CPF/CNPJ*</label>
+                                <input type="text" class="form-control" id="txDocumento" name="txDocumento" placeholder="Documento" autocomplete="off" value="{{isset($cliente->documento) ? $cliente->documento : ''}}" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="selSexo">Sexo</label>
+                                <select id="selSexo" name="selSexo" class="form-control" placeholder="Selecione">
+                                    <option value="F" {{isset($cliente->sexo) && $cliente->sexo == 'F' ? 'selected' : ''}}>Feminino</option>
+                                    <option value="M" {{isset($cliente->sexo) && $cliente->sexo == 'M' ? 'selected' : ''}}>Masculino</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txNascimento">Nascimento</label>
+                                <input type="date" id="txNascimento" name="txNascimento" class="form-control" placeholder="Nascimento" value="{{isset($cliente->nascimento) ? $cliente->nascimento : ''}}"/>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label for="txRG">RG</label>
+                                <input type="text" id="txRG" name="txRG" class="form-control" placeholder="RG" value="{{isset($cliente->rg) ? $cliente->rg : ''}}"/>
                             </div>
                         </div>
                     </div>
@@ -50,13 +83,13 @@
                                 <?php $x = 0; ?>
                                 @foreach($enderecos as $endereco)
                                 <tr>
-                                    <td><input type="hidden" name="endereco[cep][{{$x}}]" value="{{$endereco->cep}}"/>{{$endereco->cep}}</td>
-                                    <td><input type="hidden" name="endereco[endereco][{{$x}}]" value="{{$endereco->endereco}}"/>{{$endereco->endereco}}</td>
-                                    <td><input type="hidden" name="endereco[numero][{{$x}}]" value="{{$endereco->numero}}"/>{{$endereco->numero}}</td>
-                                    <td><input type="hidden" name="endereco[complemento][{{$x}}]" value="{{$endereco->complemento}}"/>{{$endereco->complemento}}</td>
-                                    <td><input type="hidden" name="endereco[bairro][{{$x}}]" value="{{$endereco->bairro}}"/>{{$endereco->bairro}}</td>
-                                    <td><input type="hidden" name="endereco[cidade][{{$x}}]" value="{{$endereco->cidade}}"/>{{$endereco->cidade}}</td>
-                                    <td><input type="hidden" name="endereco[estado][{{$x}}]" value="{{$endereco->estado}}"/>{{$endereco->estado}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][cep]" value="{{$endereco->cep}}"/>{{$endereco->cep}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][endereco]" value="{{$endereco->endereco}}"/>{{$endereco->endereco}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][numero]" value="{{$endereco->numero}}"/>{{$endereco->numero}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][complemento]" value="{{$endereco->complemento}}"/>{{$endereco->complemento}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][bairro]" value="{{$endereco->bairro}}"/>{{$endereco->bairro}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][cidade]" value="{{$endereco->cidade}}"/>{{$endereco->cidade}}</td>
+                                    <td><input type="hidden" name="endereco[{{$x}}][estado]" value="{{$endereco->estado}}"/>{{$endereco->estado}}</td>
                                     <td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>
                                 </tr>
                                 <?php $x++; ?>
@@ -80,9 +113,9 @@
                                 <?php $x = 0; ?>
                                 @foreach($telefones as $telefone)
                                 <tr>
-                                    <td><input type="hidden" name="telefone[ddd][{{$x}}]" value="{{$telefone->ddd}}"/>{{$telefone->ddd}}</td>
-                                    <td><input type="hidden" name="telefone[numero][{{$x}}]" value="{{$telefone->numero}}"/>{{$telefone->numero}}</td>
-                                    <td><input type="hidden" name="telefone[ramal][{{$x}}]" value="{{$telefone->ramal}}"/>{{$telefone->ramal}}</td>
+                                    <td><input type="hidden" name="telefone[{{$x}}][ddd]" value="{{$telefone->ddd}}"/>{{$telefone->ddd}}</td>
+                                    <td><input type="hidden" name="telefone[{{$x}}][numero]" value="{{$telefone->numero}}"/>{{$telefone->numero}}</td>
+                                    <td><input type="hidden" name="telefone[{{$x}}][ramal]" value="{{$telefone->ramal}}"/>{{$telefone->ramal}}</td>
                                     <td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>
                                 </tr>
                                 <?php $x++; ?>

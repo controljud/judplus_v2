@@ -16,7 +16,7 @@
                 <div class="box-tools">
                     <div class="row">
                         <div class="col-md-2">
-                            <a href="/{{$empresa->link}}/clientes/novo" class="btn btn-sm btn-success">Novo</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/editar" class="btn btn-sm btn-success">Novo</a>
                         </div>
                         <div class="col-md-10">
                             <div class="input-group input-group-sm" style="width: 250px;">
@@ -47,9 +47,9 @@
                     <tr>
                         <td>{{$client->nome}}</td>
                         <td>{{$client->email}}</td>
-                        <td>{{$client->cpf_cnpj}}</td>
+                        <td>{{$client->documento}}</td>
                         <td>
-                            @if(strlen($client->cpf_cnpj) < 14)
+                            @if($client->tipo_pessoa == 'F')
                                 Pessoa física
                             @else
                                 Pessoa Jurídica
@@ -57,9 +57,9 @@
                         </td>
                         <td>
                             <div class="btn btn-xs btn-default" id="viewCust">Visualizar</div>
-                            <a href="/{{$empresa->link}}/clientes/processos/{{$client->id}}" class="btn btn-xs btn-default">Processos</a>
-                            <a href="/{{$empresa->link}}/clientes/editar/{{$client->id}}" class="btn btn-xs btn-primary">Editar</a>
-                            <a href="/{{$empresa->link}}/clientes/excluir{{$client->id}}" class="btn btn-xs btn-danger">Excluir</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/processos/{{$client->id}}" class="btn btn-xs btn-default">Processos</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/editar/{{$client->id}}" class="btn btn-xs btn-primary">Editar</a>
+                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/excluir{{$client->id}}" class="btn btn-xs btn-danger">Excluir</a>
                         </td>
                     </tr>
                     @endforeach

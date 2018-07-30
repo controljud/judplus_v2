@@ -40,6 +40,16 @@ $(document).ready(function(){
     $('#txNumeroTel').mask('9999-9999?9');
     $('#txDDD').mask('99');
     $('#txDocumento').mask('999.999.999-99');
+
+    //Clientes
+    $('#selTipoPessoa').change(function(){
+        if($(this).val() == 'F') {
+            $('#txDocumento').mask('999.999.999-99');
+        }else{
+            $('#txDocumento').mask('99.999.999/9999-99');
+        }
+    });
+
     //Usuários
     $("#flUser").change(function(){
         readURL(this);
@@ -100,13 +110,13 @@ $(document).ready(function(){
         if(dados[2] != '') {
             txt = '<tr>';
             tam = dados.length;
-            txt = txt + '<td><input type="hidden" name="endereco[cep]['+(numEndereco)+']" value="'+cep+'"/>'+cep+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[rua]['+(numEndereco)+']" value="'+rua+'"/>'+rua+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[numero]['+(numEndereco)+']" value="'+numero+'"/>'+numero+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[complemento]['+(numEndereco)+']" value="'+complemento+'"/>'+complemento+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[bairro]['+(numEndereco)+']" value="'+bairro+'"/>'+bairro+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[estado]['+(numEndereco)+']" value="'+estado+'"/>'+estado+'</td>';
-            txt = txt + '<td><input type="hidden" name="endereco[cidade]['+(numEndereco)+']" value="'+cidade+'"/>'+cidade+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][cep]" value="'+cep+'"/>'+cep+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][endereco]" value="'+rua+'"/>'+rua+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][numero]" value="'+numero+'"/>'+numero+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][complemento]" value="'+complemento+'"/>'+complemento+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][bairro]" value="'+bairro+'"/>'+bairro+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][estado]" value="'+estado+'"/>'+estado+'</td>';
+            txt = txt + '<td><input type="hidden" name="endereco['+(numEndereco)+'][cidade]" value="'+cidade+'"/>'+cidade+'</td>';
             txt = txt + '<td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>';
             txt = txt + '</tr>';
             numEndereco++;
@@ -158,9 +168,9 @@ $(document).ready(function(){
         ramal = $('#txRamal').val();
 
         txt = '<tr>';
-        txt = txt + '<td><input type="hidden" name="telefone[ddd]['+(numTelefone)+']" value="'+ddd+'"/>'+ddd+'</td>';
-        txt = txt + '<td><input type="hidden" name="telefone[numero]['+(numTelefone)+']" value="'+numero+'"/>'+numero+'</td>';
-        txt = txt + '<td><input type="hidden" name="telefone[ramal]['+(numTelefone)+']" value="'+ramal+'"/>'+ramal+'</td>';
+        txt = txt + '<td><input type="hidden" name="telefone['+(numTelefone)+'][ddd]" value="'+ddd+'"/>'+ddd+'</td>';
+        txt = txt + '<td><input type="hidden" name="telefone['+(numTelefone)+'][numero]" value="'+numero+'"/>'+numero+'</td>';
+        txt = txt + '<td><input type="hidden" name="telefone['+(numTelefone)+'][ramal]" value="'+ramal+'"/>'+ramal+'</td>';
         txt = txt + '<td><div class="removeDado"><i class="fa fa-minus-circle text-red m-cursor"></i></div></td>';
         txt = txt + '</tr>';
 

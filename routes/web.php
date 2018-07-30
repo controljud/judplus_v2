@@ -15,16 +15,17 @@ Route::prefix('/{empresa}')->group(function () {
     //Menu
     Route::get('/', 'empresa\CompanyController@index')->name('index.empresa')->middleware('e.login');
     Route::get('/dashboard', 'empresa\CompanyController@index')->name('index.empresa')->middleware('e.login');
-    Route::get('/clientes', 'empresa\CustomerController@index')->name('index.usuario')->middleware('e.login');
-    Route::get('/processos', 'empresa\ProccessController@index')->name('index.usuario')->middleware('e.login');
-    Route::get('/agenda', 'empresa\CalendarController@index')->name('index.usuario')->middleware('e.login');
-    Route::get('/usuarios', 'empresa\UserController@index')->name('index.usuario')->middleware('e.login');
+    Route::get('/clientes', 'empresa\CustomerController@index')->name('index.clientes')->middleware('e.login');
+    Route::get('/processos', 'empresa\ProccessController@index')->name('index.processos')->middleware('e.login');
+    Route::get('/agenda', 'empresa\CalendarController@index')->name('index.agenda')->middleware('e.login');
+    Route::get('/usuarios', 'empresa\UserController@index')->name('index.usuarios')->middleware('e.login');
 
     //Clientes
     Route::get('/clientes/novo', 'empresa\CustomerController@getCreate')->name('get.novo.cliente')->middleware('e.login');
     Route::post('/clientes/novo', 'empresa\CustomerController@postCreate')->name('post.novo.cliente')->middleware('e.login');
+    Route::get('/clientes/editar', 'empresa\CustomerController@getEdit')->name('get.editar.cliente')->middleware('e.login');
     Route::get('/clientes/editar/{id}', 'empresa\CustomerController@getEdit')->name('get.editar.cliente')->middleware('e.login');
-    Route::post('/clientes/editar/{id}', 'empresa\CustomerController@postEdit')->name('post.editar.cliente')->middleware('e.login');
+    Route::post('/clientes/editar', 'empresa\CustomerController@postEdit')->name('post.editar.cliente')->middleware('e.login');
 
     //Processos
 
