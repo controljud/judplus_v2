@@ -32,42 +32,35 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="tbl_clientes" class="table table-bordered table-hover">
                     <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Email</th>
-                        <th>Documento</th>
-                        <th>Tipo</th>
-                        <th>Ação</th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Documento</th>
+                            <th>Entrada</th>
+                            <th>Ação</th>
+                        </tr>
                     </thead>
-                    <tbody>
-                    @foreach($clients as $client)
-                    <tr>
-                        <td>{{$client->nome}}</td>
-                        <td>{{$client->email}}</td>
-                        <td>{{$client->documento}}</td>
-                        <td>
-                            @if($client->tipo_pessoa == 'F')
-                                Pessoa física
-                            @else
-                                Pessoa Jurídica
-                            @endif
-                        </td>
-                        <td>
-                            <div class="btn btn-xs btn-default" id="viewCust">Visualizar</div>
-                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/processos/{{$client->id}}" class="btn btn-xs btn-default">Processos</a>
-                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/editar/{{$client->id}}" class="btn btn-xs btn-primary">Editar</a>
-                            <a href="{{env('APP_URL')}}/{{$empresa->link}}/clientes/excluir{{$client->id}}" class="btn btn-xs btn-danger">Excluir</a>
-                        </td>
-                    </tr>
-                    @endforeach
-                    </tbody>
+                    <tbody> </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Documento</th>
+                            <th>Entrada</th>
+                            <th>Ação</th>
+                        </tr>
+                    </tfoot>
                 </table>
-                {{$clients->links()}}
             </div>
             <!-- /.box-body -->
         </div>
     </section>
-@stop
+@endsection
+
+@section('scripts.footer')
+    <script src="{{env('APP_URL')}}/js/customer/index.js"></script>
+@endsection

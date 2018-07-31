@@ -10,10 +10,22 @@ use App\Models\Address;
 use App\Models\State;
 use App\Models\City;
 use App\Models\Phone;
+use Yajra\Datatables\Facades\Datatables;
 use DB;
 
 class CustomerController extends Controller
 {
+    public function getDatatable(){
+        $clients = Customer::where('id_empresa', $this->empresa->id);
+
+        return Datatables::eloquent($clients)->make(true);
+    }
+
+    public function listar_todos()
+    {
+        return $this->getDatatable();
+    }
+
     public function index(Request $request){
         $clients = Customer::where('id_empresa', $this->empresa->id)
             ->orderBy('nome')->paginate(15);
@@ -25,10 +37,6 @@ class CustomerController extends Controller
         ];
 
         return view('empresa.clientes.clients', $dados);
-    }
-
-    public function postCreate(Request $request){
-
     }
 
     public function getEdit(Request $request){

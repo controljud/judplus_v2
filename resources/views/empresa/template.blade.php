@@ -344,6 +344,10 @@
                 <b>Versão</b> 1.1.0
             </div>
             <strong>Copyright &copy; 2017 <a href="http://isacoisas.com.br">Isaias Santos</a>.</strong> Todos os direitos reservados.
+            <script LANGUAGE="JavaScript">
+                var public_path = '{{env('APP_URL')}}';
+            </script>
+            @yield('scripts.footer')
         </footer>
     </div>
     <!-- ./wrapper -->

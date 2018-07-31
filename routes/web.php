@@ -5,6 +5,9 @@ Route::get('/', 'HomeController@getIndex')->name('index.home');
 //Ajax
 Route::get('/endereco/cidade', 'HomeController@getCidade')->name('ajax.get.cidade');
 
+//Clientes
+Route::get('/clientes/listar-todos', 'empresa\CustomerController@listar_todos');
+
 Route::prefix('/{empresa}')->group(function () {
     //Rotas não autenticadas (apenas login)
     Route::get('/login', 'empresa\login\LoginController@getLogin')->name('get.login.empresa');
