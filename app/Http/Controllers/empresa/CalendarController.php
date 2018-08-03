@@ -14,6 +14,6 @@ class CalendarController extends Controller
             'user' => $request->session()->get('_user'),
         ];
 
-        return view('empresa.agenda.calendar', $dados);
+        return view('empresa.agenda.index', $dados);
     }
 }

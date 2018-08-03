@@ -8,6 +8,7 @@ Route::get('/endereco/cidade', 'HomeController@getCidade')->name('ajax.get.cidad
 //Clientes
 Route::get('/clientes/listar-todos', 'empresa\CustomerController@listar_todos');
 Route::get('/usuarios/listar-todos', 'empresa\UserController@listar_todos');
+Route::get('/processos/listar-todos', 'empresa\ProccessController@listar_todos');
 
 Route::prefix('/{empresa}')->group(function () {
     //Rotas não autenticadas (apenas login)
