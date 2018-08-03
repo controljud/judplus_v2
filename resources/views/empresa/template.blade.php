@@ -38,6 +38,10 @@
 
         <!-- Google Font -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+        <!-- Datatables -->
+        <link rel="stylesheet" href="{{env('APP_URL')}}/css/datatables.min.css">
+        <script src="{{env('APP_URL')}}/js/datatables.min.js"></script>
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -346,6 +350,7 @@
             <strong>Copyright &copy; 2017 <a href="http://isacoisas.com.br">Isaias Santos</a>.</strong> Todos os direitos reservados.
             <script LANGUAGE="JavaScript">
                 var public_path = '{{env('APP_URL')}}';
+                var emp_atual = '{{$empresa->link}}';
             </script>
             @yield('scripts.footer')
         </footer>

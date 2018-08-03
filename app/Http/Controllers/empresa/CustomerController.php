@@ -10,15 +10,15 @@ use App\Models\Address;
 use App\Models\State;
 use App\Models\City;
 use App\Models\Phone;
-use Yajra\Datatables\Facades\Datatables;
+use Yajra\DataTables\Facades\DataTables;
 use DB;
 
 class CustomerController extends Controller
 {
     public function getDatatable(){
-        $clients = Customer::where('id_empresa', $this->empresa->id);
+        $clients = Customer::join('empresa', 'empresa.id', 'clientes.id_empresa')->where('empresa.link', session('_empresa'))->get();
 
-        return Datatables::eloquent($clients)->make(true);
+        return DataTables::of($clients)->make(true);
     }
 
     public function listar_todos()

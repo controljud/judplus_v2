@@ -17,11 +17,12 @@ class LoginCheck
         $segments = $request->segments();
         $empresa = $segments[0];
 
-        if (!$request->session()->has('_id')
-            ){
+        if (!session('_id')){
             return redirect(url('/'.$empresa.'/login'));
-        }else if($request->session()->has('_empresa')
-                && $request->session()->get('_empresa') != $empresa){
+        }else if(
+            session('_empresa')
+            && session('_empresa') != $empresa
+        ){
             return redirect(url('/'.$empresa.'/login'));
         }
         return $next($request);

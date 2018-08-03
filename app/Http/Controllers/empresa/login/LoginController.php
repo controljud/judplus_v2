@@ -25,9 +25,9 @@ class LoginController extends Controller
             ->where('id_empresa', $this->empresa->id)->first();
 
         if(isset($user)){
-            $request->session()->put('_id', $user->id);
-            $request->session()->put('_user', $user);
-            $request->session()->put('_empresa', $this->empresa->link);
+            session('_id', $user->id);
+            session('_user', $user);
+            session('_empresa', $this->empresa->link);
 
             return redirect(url('/'.$this->empresa->link));
         }else{
