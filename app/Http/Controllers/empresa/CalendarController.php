@@ -8,8 +8,9 @@ use App\Http\Controllers\Controller;
 class CalendarController extends Controller
 {
     public function index(Request $request){
+        $empresa = \Session::get('_empresa');
         $dados = [
-            'empresa' => $this->empresa,
+            'empresa' => $empresa,
             'user' => $request->session()->get('_user'),
         ];
 

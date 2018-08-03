@@ -1,6 +1,5 @@
 @extends('empresa.template')
 @section('content')
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>{{$empresa->name}}<small>Usuários</small></h1>
         <ol class="breadcrumb">
@@ -50,8 +49,6 @@
                     </div>
                 </div>
             </div>
-            @include('empresa.usuarios.modalview')
-            <!-- /.box-body -->
         </div>
     </section>
 @endsection
