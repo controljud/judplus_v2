@@ -13,20 +13,7 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public $empresa = null;
-    public $dados;
-
     public function __construct(Request $request){
-        $this->getEmpresa($request);
-    }
 
-    public function getEmpresa(Request $request){
-        $segments = $request->segments();
-        if(isset($segments[0])){
-            if($empresa = Company::where('link', $segments[0])->first()){
-                $this->empresa = $empresa;
-            }
-        }
     }
-
 }

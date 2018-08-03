@@ -6,75 +6,46 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Users;
 use App\Models\UserType;
+use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
-
-    public function index(Request $request){
+    public function getDatatable(){
+        $empresa = \Session::get('_empresa');
         $users = Users::select('users.id', 'users.name', 'users.email', 'users.created_at', 'users.id_tipo_usuario as id_tipo', 'tipo_usuario.tipo as tipo_usuario')
             ->join('tipo_usuario', 'tipo_usuario.id', 'users.id_tipo_usuario')
-            ->where('users.id_empresa', $this->empresa->id)
-            ->orderBy('users.name')->paginate(15);
+            ->where('users.id_empresa', $empresa->id)
+            ->orderBy('users.name')->get();
 
-        $dados = [
-            'empresa' => $this->empresa,
-            'user' => $request->session()->get('_user'),
-            'usuarios' => $users,
-        ];
-
-        return view('empresa.usuarios.users', $dados);
+        return DataTables::of($users)->make(true);
     }
 
-    public function getCreate(Request $request){
-        $tipos = UserType::all();
-        $dados = [
-            'empresa' => $this->empresa,
-            'user' => $request->session()->get('_user'),
-            'action' => 'novo',
-            'tipos' => $tipos,
-        ];
-
-        return view('empresa.usuarios.user', $dados);
+    public function listar_todos()
+    {
+        return $this->getDatatable();
     }
 
-    public function postCreate(Request $request){
-        $nome = $request->input('txNome');
-        $email = $request->input('txEmail');
-        $senha = $request->input('psSenha');
-        $tipo = $request->input('selTipo');
-        $name_image = null;
+    public function index(Request $request){
+        $empresa = \Session::get('_empresa');
 
-        if($request->file('flUser')->isValid()){
-            $file = $request->file('flUser');
-            $ext = $file->getClientOriginalExtension();
+        $dados = [
+            'empresa' => $empresa,
+            'user' => \Session::get('_user'),
+        ];
 
-            $name_image = md5(rand(0, 10000).$nome.time()).'.'.$ext;
-
-            $file->move('image/users', $name_image);
-        }
-
-        $user = new Users;
-        $user->name = $nome;
-        $user->email = $email;
-        $user->password = md5($senha);
-        $user->id_tipo_usuario = $tipo;
-        $user->id_empresa = $this->empresa->id;
-        $user->image = $name_image;
-
-        $user->save();
-
-        return $this->index($request);
+        return view('empresa.usuarios.index', $dados);
     }
 
     public function getEdit(Request $request){
+        $empresa = \Session::get('_empresa');
         $segments = $request->segments();
-        $id_usr = $segments[3];
+        $id_usr = isset($segments[3]) ? $segments[3] : 0;
 
-        $usuario = Users::where('id', $id_usr)->where('id_empresa', $this->empresa->id)->first();
+        $usuario = Users::where('id', $id_usr)->where('id_empresa', $empresa->id)->first();
 
         $tipos = UserType::all();
         $dados = [
-            'empresa' => $this->empresa,
+            'empresa' => $empresa,
             'user' => $request->session()->get('_user'),
             'action' => 'novo',
             'tipos' => $tipos,
@@ -85,29 +56,29 @@ class UserController extends Controller
     }
 
     public function postEdit(Request $request){
-        $segments = $request->segments();
-        $id_user = $segments[3];
+        $empresa = \Session::get('_empresa');
+        $id_user = $request->input('_id');
         $nome = $request->input('txNome');
         $email = $request->input('txEmail');
         $senha = $request->input('psSenha');
         $tipo = $request->input('selTipo');
         $name_image = null;
 
-        if($request->file('flUser')->isValid()){
+        if($request->file('flUser') != null && $request->file('flUser')->isValid()){
             $file = $request->file('flUser');
             $ext = $file->getClientOriginalExtension();
 
             $name_image = md5(rand(0, 10000).$nome.time()).'.'.$ext;
 
-            $file->move('image/users/'.$this->empresa->link.'/', $name_image);
+            $file->move('image/users/'.$empresa->link.'/', $name_image);
         }
 
-        $user = Users::where('id', $id_user)->first();
+        $user = Users::findOrNew($id_user);
         $user->name = $nome;
         $user->email = $email;
         $user->password = $senha != '' ? md5($senha) : $user->password;
         $user->id_tipo_usuario = $tipo;
-        $user->id_empresa = $this->empresa->id;
+        $user->id_empresa = $empresa->id;
         $user->image = $name_image;
 
         $user->save();
@@ -116,11 +87,12 @@ class UserController extends Controller
     }
 
     public function ajaxView(Request $request){
+        $empresa = \Session::get('_empresa');
         $id_usr = $request->input('id_usr');
         if($user = Users::select('users.name', 'users.email', 'users.image', 'tipo_usuario.tipo')
             ->join('tipo_usuario', 'tipo_usuario.id', 'users.id_tipo_usuario')
             ->where('users.id', $id_usr)
-            ->where('id_empresa', $this->empresa->id)->first()){
+            ->where('id_empresa', $empresa->id)->first()){
             return json_encode($user);
         }else{
             return '';

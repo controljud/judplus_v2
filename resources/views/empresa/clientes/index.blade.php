@@ -26,25 +26,25 @@
                     <div class="box-body table-responsive no-padding" style="margin:10px; border: 0">
                         <table id="tbl_clientes" class="table table-bordered table-hover">
                             <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Documento</th>
-                                <th>Entrada</th>
-                                <th>Ações</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Documento</th>
+                                    <th>Criado em</th>
+                                    <th>Ações</th>
+                                </tr>
                             </thead>
                             <tbody></tbody>
                             <tfoot>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>Email</th>
-                                <th>Documento</th>
-                                <th>Entrada</th>
-                                <th>Ações</th>
-                            </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Email</th>
+                                    <th>Documento</th>
+                                    <th>Criado em</th>
+                                    <th>Ações</th>
+                                </tr>
                             </tfoot>
                         </table>
                     </div>
@@ -56,7 +56,4 @@
 
 @section('scripts.footer')
     <script src="{{env('APP_URL')}}/js/customer/index.js"></script>
-    <script>
-
-    </script>
 @endsection

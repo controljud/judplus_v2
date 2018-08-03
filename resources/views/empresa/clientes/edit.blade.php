@@ -13,6 +13,16 @@
     <section class="content">
         <div class="box">
             <form method="post" action="{{env('APP_URL')}}/{{$empresa->link}}/clientes/editar">
+                <div class="box-header">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a href="javascript:history.back()" class="btn btn-default btn-sm">Voltar</a>
+                        </div>
+                        <div class="col-md-6" style="text-align:right">
+                            <input type="submit" class="btn btn-success btn-sm" value="Salvar"/>
+                        </div>
+                    </div>
+                </div>
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_id" value="{{isset($cliente->id) ? $cliente->id : 0}}" />
                 <div class="box-body">
@@ -124,14 +134,18 @@
                             </table>
                         </div>
                     </div>
-                    <br/><br/>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="submit" class="btn btn-success btn-sm" value="Salvar"/>
+                    <div class="box-footer">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="javascript:history.back()" class="btn btn-default btn-sm">Voltar</a>
+                            </div>
+                            <div class="col-md-6" style="text-align:right">
+                                <input type="submit" class="btn btn-success btn-sm" value="Salvar"/>
+                            </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
     </section>
-@stop
+@endsection

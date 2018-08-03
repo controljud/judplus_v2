@@ -16,9 +16,10 @@ use DB;
 class CustomerController extends Controller
 {
     public function getDatatable(){
+        $empresa = \Session::get('_empresa');
         $clients = Customer::select('clientes.*')
             ->join('empresa', 'empresa.id', 'clientes.id_empresa')
-            ->where('empresa.link', session('_empresa'))->get();
+            ->where('empresa.link', $empresa->link)->get();
 
         return DataTables::of($clients)->make(true);
     }
@@ -29,25 +30,24 @@ class CustomerController extends Controller
     }
 
     public function index(Request $request){
-        $clients = Customer::where('id_empresa', $this->empresa->id)
-            ->orderBy('nome')->paginate(15);
+        $empresa = \Session::get('_empresa');
 
         $dados = [
-            'empresa' => $this->empresa,
-            'user' => $request->session()->get('_user'),
-            'clients' => $clients ? $clients : array(),
+            'empresa' => $empresa,
+            'user' => $request->session()->get('_user')
         ];
 
-        return view('empresa.clientes.clients', $dados);
+        return view('empresa.clientes.index', $dados);
     }
 
     public function getEdit(Request $request){
+        $empresa = \Session::get('_empresa');
         $segments = $request->segments();
         $id_cliente = isset($segments[3]) ? $segments[3] : 0;
         $enderecos = [];
         $telefones = [];
 
-        if($cliente = Customer::where('id', $id_cliente)->where('id_empresa', $this->empresa->id)->first()) {
+        if($cliente = Customer::where('id', $id_cliente)->where('id_empresa', $empresa->id)->first()) {
             $enderecos = Address::select('endereco.cep', 'endereco.endereco', 'endereco.numero', 'endereco.complemento', 'endereco.bairro', 'cidade.cidade', 'uf.sigla as estado')
                 ->join('cidade', 'cidade.id', 'endereco.cidade')
                 ->join('uf', 'uf.id', 'endereco.id_uf')
@@ -56,7 +56,7 @@ class CustomerController extends Controller
         }
 
         $dados = [
-            'empresa' => $this->empresa,
+            'empresa' => $empresa,
             'user' => $request->session()->get('_user'),
             'estados' => DB::table('uf')->get(),
             'cliente' => $cliente,
@@ -68,6 +68,7 @@ class CustomerController extends Controller
     }
 
     public function postEdit(Request $request){
+        $empresa = \Session::get('_empresa');
         $data = Input::all();
 
         $cliente = Customer::findOrNew($data['_id']);
@@ -80,7 +81,7 @@ class CustomerController extends Controller
         $cliente->rg = $data['txRG'];
         $cliente->image = '';
 
-        $cliente->id_empresa = $this->empresa->id;
+        $cliente->id_empresa = $empresa->id;
 
         $cliente->save();
 

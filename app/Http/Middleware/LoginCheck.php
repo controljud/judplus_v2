@@ -14,16 +14,15 @@ class LoginCheck
      * @return mixed
      */
     public function handle($request, Closure $next){
-        $segments = $request->segments();
-        $empresa = $segments[0];
+        $empresa = \Session::get('_empresa');
 
-        if (!session('_id')){
-            return redirect(url('/'.$empresa.'/login'));
+        if (!\Session::get('_id')){
+            return redirect(url('/'.$empresa->link.'/login'));
         }else if(
-            session('_empresa')
-            && session('_empresa') != $empresa
+            \Session::has('_empresa')
+            && \Session::get('_empresa')->link != $empresa->link
         ){
-            return redirect(url('/'.$empresa.'/login'));
+            return redirect(url('/'.$empresa->link.'/login'));
         }
         return $next($request);
     }

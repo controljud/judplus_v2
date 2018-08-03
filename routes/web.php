@@ -7,6 +7,7 @@ Route::get('/endereco/cidade', 'HomeController@getCidade')->name('ajax.get.cidad
 
 //Clientes
 Route::get('/clientes/listar-todos', 'empresa\CustomerController@listar_todos');
+Route::get('/usuarios/listar-todos', 'empresa\UserController@listar_todos');
 
 Route::prefix('/{empresa}')->group(function () {
     //Rotas não autenticadas (apenas login)
@@ -24,8 +25,6 @@ Route::prefix('/{empresa}')->group(function () {
     Route::get('/usuarios', 'empresa\UserController@index')->name('index.usuarios')->middleware('e.login');
 
     //Clientes
-    Route::get('/clientes/novo', 'empresa\CustomerController@getCreate')->name('get.novo.cliente')->middleware('e.login');
-    Route::post('/clientes/novo', 'empresa\CustomerController@postCreate')->name('post.novo.cliente')->middleware('e.login');
     Route::get('/clientes/editar', 'empresa\CustomerController@getEdit')->name('get.editar.cliente')->middleware('e.login');
     Route::get('/clientes/editar/{id}', 'empresa\CustomerController@getEdit')->name('get.editar.cliente')->middleware('e.login');
     Route::post('/clientes/editar', 'empresa\CustomerController@postEdit')->name('post.editar.cliente')->middleware('e.login');
@@ -35,10 +34,7 @@ Route::prefix('/{empresa}')->group(function () {
     //Agenda
 
     //Usuarios
-    Route::get('/usuarios/novo', 'empresa\UserController@getCreate')->name('get.novo.usuario')->middleware('e.login');
-    Route::post('/usuarios/novo', 'empresa\UserController@postCreate')->name('post.novo.usuario')->middleware('e.login');
+    Route::get('/usuarios/editar', 'empresa\UserController@getEdit')->name('get.editar.usuario')->middleware('e.login');
     Route::get('/usuarios/editar/{id}', 'empresa\UserController@getEdit')->name('get.editar.usuario')->middleware('e.login');
-    Route::post('/usuarios/editar/{id}', 'empresa\UserController@postEdit')->name('post.editar.usuario')->middleware('e.login');
-    //Ajax
-    Route::get('/usuarios/view', 'empresa\UserController@ajaxView')->name('ajax.view.usuario')->middleware('e.login');
+    Route::post('/usuarios/editar', 'empresa\UserController@postEdit')->name('post.editar.usuario')->middleware('e.login');
 });
