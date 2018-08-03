@@ -16,7 +16,9 @@ use DB;
 class CustomerController extends Controller
 {
     public function getDatatable(){
-        $clients = Customer::join('empresa', 'empresa.id', 'clientes.id_empresa')->where('empresa.link', session('_empresa'))->get();
+        $clients = Customer::select('clientes.*')
+            ->join('empresa', 'empresa.id', 'clientes.id_empresa')
+            ->where('empresa.link', session('_empresa'))->get();
 
         return DataTables::of($clients)->make(true);
     }

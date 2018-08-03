@@ -350,6 +350,7 @@
             <strong>Copyright &copy; 2017 <a href="http://isacoisas.com.br">Isaias Santos</a>.</strong> Todos os direitos reservados.
             <script LANGUAGE="JavaScript">
                 var public_path = '{{env('APP_URL')}}';
+                var config_lang_json = "{!! Lang::get('data_tables_config.config_lang_json') !!}";
                 var emp_atual = '{{$empresa->link}}';
             </script>
             @yield('scripts.footer')

@@ -57,6 +57,6 @@
 @section('scripts.footer')
     <script src="{{env('APP_URL')}}/js/customer/index.js"></script>
     <script>
-        var config_lang_json = "{!! Lang::get('data_tables_config.config_lang_json') !!}";
+
     </script>
 @endsection
